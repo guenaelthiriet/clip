@@ -3,6 +3,8 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: "jacoco"
+
 mainClassName = "clip.Clip"
 
 sourceCompatibility = 1.7
@@ -22,7 +24,7 @@ dependencies {
 }
 
 //create a single Jar with all dependencies
-task fatJar(type: Jar) {
+task jarWithDependencies(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'Clip jar file',
                 'Implementation-Version': version,
