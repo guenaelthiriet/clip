@@ -16,8 +16,8 @@ import static org.junit.Assert.assertTrue;
 @RunWith(Parameterized.class)
 public class LongClipUrlValidatorTest {
 
-    private String url;
-    private boolean validationResult;
+    private final String url;
+    private final boolean validationResult;
 
     public LongClipUrlValidatorTest(String url, boolean validationResult) {
         this.url = url;

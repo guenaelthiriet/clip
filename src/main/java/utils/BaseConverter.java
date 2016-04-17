@@ -24,12 +24,12 @@ public final class BaseConverter implements IConverter {
     /**
      * An alphabet in which we wish to encode
      */
-    private String alphabet;
+    private final String alphabet;
 
     /**
      * The target base in which we wish to encode
      */
-    private BigInteger base;
+    private final BigInteger base;
 
     /**
      * @param alphabet The target alphabet to use.
@@ -43,7 +43,7 @@ public final class BaseConverter implements IConverter {
      * The method validates that the alphabet fits with the supported range of target alphabets.
      *
      * @param alphabet Alphabet to validate.
-     * @return IllegalArgumentException
+     * @throws IllegalArgumentException When parameters provided are invalid.
      */
     private static void validateParameters(String alphabet) throws IllegalArgumentException {
         // We assume that the alphabet size always fits in a int int this class.

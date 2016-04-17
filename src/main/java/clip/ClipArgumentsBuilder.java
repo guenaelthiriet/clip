@@ -15,7 +15,7 @@ public class ClipArgumentsBuilder {
     private String url;
 
     /**
-     * The algorith used
+     * The algorithm used
      */
     private ClipArguments.Algorithm algorithm;
 

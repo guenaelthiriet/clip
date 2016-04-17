@@ -15,7 +15,7 @@ public class MemoryStorage implements Storage {
     /**
      * The storage container
      */
-    private BidiMap container;
+    private final BidiMap container;
 
     /**
      * Default constructor instantiates the container

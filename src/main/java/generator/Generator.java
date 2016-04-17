@@ -14,5 +14,5 @@ public interface Generator {
      * @return A unique identifier.
      * @throws IndexOutOfBoundsException when the generator has reached its limit.
      */
-    public BigInteger getNextId() throws IndexOutOfBoundsException;
+    BigInteger getNextId() throws IndexOutOfBoundsException;
 }

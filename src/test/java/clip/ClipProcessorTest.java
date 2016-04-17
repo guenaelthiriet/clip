@@ -63,7 +63,6 @@ public class ClipProcessorTest {
     @Test
     public void inexistentShortUrl() throws Exception {
         String shortUrl = "http://cl.ip/1234";
-        String longUrl = "http://www.google.com/";
         String identifier = "1234";
 
         ClipArguments arguments = new ClipArguments(ClipArguments.Algorithm.DECODE, shortUrl);

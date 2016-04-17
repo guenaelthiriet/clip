@@ -31,7 +31,7 @@ public class MemoryStorageTest {
         // Value can be retrieved
         assertTrue(storage.getKey(value).equals(key));
         assertTrue(storage.getValue(key).equals(value));
-        // And the exitence API works...
+        // And the existence API works...
         assertTrue(storage.hasKey(key));
         assertTrue(storage.hasValue(value));
         assertTrue(!storage.hasValue(key));

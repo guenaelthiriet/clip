@@ -11,22 +11,22 @@ import utils.IConverter;
  * @author Guenael Thiriet
  */
 
-public class ClipConfiguration {
+class ClipConfiguration {
 
     /**
      * A bijective converter class
      */
-    private IConverter converter;
+    private final IConverter converter;
 
     /**
      * A unique identifier generator
      */
-    private Generator idGenerator;
+    private final Generator idGenerator;
 
     /**
      * A storage implementation, which is used to persist Clip data
      */
-    private Storage storage;
+    private final Storage storage;
 
     /**
      * @param converter   The converter used by Clip.

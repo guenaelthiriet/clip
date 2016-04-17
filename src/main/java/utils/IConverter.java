@@ -16,7 +16,7 @@ public interface IConverter {
      * @param number An number to encode into destination base.
      * @return A string containing the encoded value of number in destination base.
      */
-    public String encode(BigInteger number);
+    String encode(BigInteger number);
 
     /**
      * The function decodes from the destination base to base origin. Base depends on the alphabet size.
@@ -24,5 +24,5 @@ public interface IConverter {
      * @param encodedValue A string representation in the destination base.
      * @return A BigInteger value in base origin of the encodedValue.
      */
-    public BigInteger decode(String encodedValue);
+    BigInteger decode(String encodedValue);
 }

@@ -24,7 +24,7 @@ public class Clip {
     public static final String ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     /**
-     * The maximum number of alapha-num chars allowed in a short URL
+     * The maximum number of alpha-num chars allowed in a short URL
      */
     public static final int MAX_CHARS_IN_SHORT_URL = 10;
 
@@ -34,7 +34,7 @@ public class Clip {
     public static final String SHORT_URL_DOMAIN = "cl.ip";
 
     /**
-     * @param args Arguments for the Clip progam. Not used for now.
+     * @param args Arguments for the Clip program. Not used for now.
      */
     public static void main(String[] args) {
         // Let's configure clip!

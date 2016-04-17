@@ -11,12 +11,12 @@ public class ClipArguments {
     /**
      * A URL
      */
-    private String url;
+    private final String url;
 
     /**
-     * The algorith used
+     * The algorithm used
      */
-    private Algorithm algorithm;
+    private final Algorithm algorithm;
 
     /**
      * @param algorithm Algorithm to use.
@@ -28,14 +28,14 @@ public class ClipArguments {
     }
 
     /**
-     * @return true if the class was configure to use the following alogorithm : {@link Algorithm#ENCODE}.
+     * @return true if the class was configure to use the following algorithm : {@link Algorithm#ENCODE}.
      */
     public boolean isEncodeSelected() {
         return algorithm == Algorithm.ENCODE;
     }
 
     /**
-     * @return true if the class was configure to use the following alogorithm : {@link Algorithm#DECODE}.
+     * @return true if the class was configure to use the following algorithm : {@link Algorithm#DECODE}.
      */
     public boolean isDecodeSelected() {
         return algorithm == Algorithm.DECODE;

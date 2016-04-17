@@ -7,7 +7,7 @@ package clip;
  * @author Guenael Thiriet
  */
 
-public class ClipProcessingException extends Exception {
+class ClipProcessingException extends Exception {
 
     public ClipProcessingException() {
         super();

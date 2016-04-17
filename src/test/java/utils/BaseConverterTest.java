@@ -1,5 +1,6 @@
 package utils;
 
+import clip.Clip;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -19,16 +20,15 @@ import static org.junit.Assert.assertTrue;
 @RunWith(Parameterized.class)
 public class BaseConverterTest {
 
-    final String binaryAlphabet = "01";
-    final String octalAlphabet = "01234567";
-    final String baseTenAlphabet = "0123456789";
-    final String hexAlphabet = "0123456789abcdef";
-    final String thirtySixCharsAlphabet = "0123456789abcdefghijklmnopqrstuvwxyz";
-    final String sixtyTwoCharsAlphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    final private String binaryAlphabet = "01";
+    final private String octalAlphabet = "01234567";
+    final private String baseTenAlphabet = "0123456789";
+    final private String hexAlphabet = "0123456789abcdef";
+    final private String thirtySixCharsAlphabet = "0123456789abcdefghijklmnopqrstuvwxyz";
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
-    private String input;
+    private final String input;
 
 
     public BaseConverterTest(String input) {
@@ -60,7 +60,7 @@ public class BaseConverterTest {
         // Test with 63 character alphabet
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(String.format("Unsupported alphabet length: %d", BaseConverter.MAX_ALPHABET_LEN + 1));
-        BaseConverter.createBaseConverter(sixtyTwoCharsAlphabet + "_");
+        BaseConverter.createBaseConverter(Clip.ALPHABET + "_");
     }
 
     @Test
@@ -113,7 +113,7 @@ public class BaseConverterTest {
 
     @Test
     public void testEncodeDecodeSixtyTwo() throws Exception {
-        IConverter hexConverter = BaseConverter.createBaseConverter(sixtyTwoCharsAlphabet);
+        IConverter hexConverter = BaseConverter.createBaseConverter(Clip.ALPHABET);
         String encodedValue = hexConverter.encode(new BigInteger(input));
         BigInteger decodedValue = hexConverter.decode(encodedValue);
         assertTrue(decodedValue.toString().equals(input));

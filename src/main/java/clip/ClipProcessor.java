@@ -20,17 +20,17 @@ import java.math.BigInteger;
  * @author Guenael Thiriet
  */
 
-public class ClipProcessor {
+class ClipProcessor {
 
     /**
      * Let the processor what it has to do.
      */
-    private ClipArguments arguments;
+    private final ClipArguments arguments;
 
     /**
      * The configuration which the processor can use to convert the URLs.
      */
-    private ClipConfiguration configuration;
+    private final ClipConfiguration configuration;
 
     /**
      * @param arguments     Some arguments to use for processing.
@@ -44,7 +44,7 @@ public class ClipProcessor {
     /**
      * Formats a short URL.
      *
-     * @param value A unique indentifier.
+     * @param value A unique identifier.
      * @return A short URL.
      */
     private String getShortUrl(String value) {
@@ -99,7 +99,6 @@ public class ClipProcessor {
     private String toLongUrl(String url) throws ClipProcessingException {
         Storage storage = configuration.getStorage();
         IConverter converter = configuration.getConverter();
-        Generator idGenerator = configuration.getIdGenerator();
 
         // FIXME this does not seem super safe
         String encodedValue = url.substring(url.lastIndexOf('/') + 1);

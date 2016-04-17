@@ -8,7 +8,7 @@ import java.io.Console;
  * @author Guenael Thiriet
  */
 
-public final class ClipConsole {
+final class ClipConsole {
 
     /**
      * The new line separator
@@ -23,12 +23,12 @@ public final class ClipConsole {
     /**
      * The <code>ClipConfiguration</code> used by Clip
      */
-    private ClipConfiguration configuration;
+    private final ClipConfiguration configuration;
 
     /**
      * @param configuration A configuration object instance used to convert URLs.
      */
-    public ClipConsole(ClipConfiguration configuration) {
+    ClipConsole(ClipConfiguration configuration) {
         exit = false;
         this.configuration = configuration;
     }
@@ -69,11 +69,11 @@ public final class ClipConsole {
      * @param url the URL to print.
      */
     private void printUrl(String url) {
-        System.out.println(url);
+        System.out.println("The URL is: " + url);
     }
 
     /**
-     * Prints an erro message.
+     * Prints an error message.
      *
      * @param msg The error message to print.
      */
@@ -84,7 +84,7 @@ public final class ClipConsole {
     /**
      * The method starts the interactive console.
      */
-    public void startInteractiveConsole() {
+    void startInteractiveConsole() {
 
         Console console = System.console();
         if (console == null) {
@@ -119,13 +119,13 @@ public final class ClipConsole {
 
             // Let's validate them first
             if (!processor.validate()) {
-                // Ouch, something is wrong during the validation
+                // Ouch, something went wrong during the validation
                 printErrorMsg("Bad arguments");
                 // Go back to typing the URL...
                 continue;
             }
 
-            // Allright, let's make it fly!
+            // Alright, let's make it fly!
             try {
                 String result = processor.processUrl();
                 printUrl(result);
