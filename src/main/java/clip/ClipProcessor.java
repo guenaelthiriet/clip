@@ -8,8 +8,6 @@ import utils.ClipUrlValidator;
 import utils.IConverter;
 import utils.ShortClipUrlValidator;
 
-import java.math.BigInteger;
-
 /**
  * The <code>ClipProcessor</code> contains the main Clip logic.
  * It can:
@@ -102,7 +100,7 @@ class ClipProcessor {
 
         // FIXME this does not seem super safe
         String encodedValue = url.substring(url.lastIndexOf('/') + 1);
-        BigInteger id = converter.decode(encodedValue);
+        Long id = converter.decode(encodedValue);
         if (!storage.hasKey(id.toString())) {
             throw new ClipProcessingException("Trying to decode a string not generated");
         }
@@ -132,7 +130,7 @@ class ClipProcessor {
             storage.store(identifier, url);
         }
         // Finally encode it and return it
-        String encodedId = converter.encode(new BigInteger(identifier));
+        String encodedId = converter.encode(new Long(identifier));
         return getShortUrl(encodedId);
     }
 

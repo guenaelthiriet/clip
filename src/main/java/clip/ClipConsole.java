@@ -14,16 +14,14 @@ final class ClipConsole {
      * The new line separator
      */
     private static final String NEW_LINE = System.getProperty("line.separator");
-
-    /**
-     * This flag indicates if the console loop should exit
-     */
-    private boolean exit;
-
     /**
      * The <code>ClipConfiguration</code> used by Clip
      */
     private final ClipConfiguration configuration;
+    /**
+     * This flag indicates if the console loop should exit
+     */
+    private boolean exit;
 
     /**
      * @param configuration A configuration object instance used to convert URLs.

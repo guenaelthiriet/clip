@@ -8,8 +8,6 @@ import storage.Storage;
 import utils.BaseConverter;
 import utils.IConverter;
 
-import java.math.BigInteger;
-
 /**
  * The <code>Clip</code> is the Clip program entry point.
  *
@@ -42,8 +40,8 @@ public class Clip {
         String lastCharOfAlphabet = ALPHABET.substring(ALPHABET.length() - 1);
         String biggestEncodedNumber = StringUtils.repeat(lastCharOfAlphabet, MAX_CHARS_IN_SHORT_URL);
 
-        BigInteger upperLimit = converter.decode(biggestEncodedNumber);
-        Generator idGenerator = SimpleGenerator.createGenerator(BigInteger.ZERO, upperLimit);
+        Long upperLimit = converter.decode(biggestEncodedNumber);
+        Generator idGenerator = SimpleGenerator.createGenerator(0L, upperLimit);
 
         // Get the storage
         Storage storage = new MemoryStorage();

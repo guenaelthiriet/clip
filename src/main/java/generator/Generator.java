@@ -1,7 +1,5 @@
 package generator;
 
-import java.math.BigInteger;
-
 /**
  * The <code>Generator</code> is an interface for
  * a unique identifier generator.
@@ -14,5 +12,5 @@ public interface Generator {
      * @return A unique identifier.
      * @throws IndexOutOfBoundsException when the generator has reached its limit.
      */
-    BigInteger getNextId() throws IndexOutOfBoundsException;
+    Long getNextId() throws IndexOutOfBoundsException;
 }

@@ -1,7 +1,5 @@
 package generator;
 
-import java.math.BigInteger;
-
 /**
  * The <code>SimpleGenerator</code> is class that implements <code>SimpleGenerator</code>.
  * The generator is just an incremental generator. Increments are of 1.
@@ -15,18 +13,18 @@ public final class SimpleGenerator implements Generator {
     /**
      * The current identifier
      */
-    private BigInteger currentId = null;
+    private Long currentId = null;
 
     /**
      * The upper limit of the generator
      */
-    private BigInteger upperLimit = null;
+    private final Long upperLimit;
 
     /**
      * @param origin     The starting point of the generator.
      * @param upperLimit The upper limit boundary, after which this generator will stop generating values.
      */
-    private SimpleGenerator(BigInteger origin, BigInteger upperLimit) {
+    private SimpleGenerator(Long origin, Long upperLimit) {
         this.currentId = origin;
         this.upperLimit = upperLimit;
     }
@@ -38,7 +36,7 @@ public final class SimpleGenerator implements Generator {
      * @param upperLimit The upper limit boundary, after which this generator will stop generating values.
      * @return A <code>SimpleGenerator</code> object instance.
      */
-    public static Generator createGenerator(BigInteger origin, BigInteger upperLimit) {
+    public static Generator createGenerator(Long origin, Long upperLimit) {
         validateParameters(origin, upperLimit);
         return new SimpleGenerator(origin, upperLimit);
     }
@@ -50,14 +48,14 @@ public final class SimpleGenerator implements Generator {
      * @param upperLimit The upper limit boundary, after which this generator will stop generating values.
      * @throws IllegalArgumentException
      */
-    private static void validateParameters(BigInteger origin, BigInteger upperLimit) throws IllegalArgumentException {
-        if (origin.compareTo(BigInteger.ZERO) < 0) {
+    private static void validateParameters(Long origin, Long upperLimit) throws IllegalArgumentException {
+        if (origin < 0) {
             throw new IllegalArgumentException("Origin is negative");
         }
-        if (upperLimit.compareTo(BigInteger.ZERO) < 0) {
+        if (upperLimit < 0) {
             throw new IllegalArgumentException("UpperLimit is negative");
         }
-        if (origin.compareTo(upperLimit) >= 0) {
+        if (origin >= upperLimit) {
             throw new IllegalArgumentException("Cannot specify origin higher than upperLimit");
         }
     }
@@ -69,10 +67,10 @@ public final class SimpleGenerator implements Generator {
      * @throws IndexOutOfBoundsException when the generator has reached its upper limit.
      */
     @Override
-    public BigInteger getNextId() throws IndexOutOfBoundsException {
+    public Long getNextId() throws IndexOutOfBoundsException {
         if (currentId.equals(upperLimit)) {
             throw new IndexOutOfBoundsException("Upper limit reached.");
         }
-        return currentId = BigInteger.ONE.add(currentId);
+        return currentId += 1;
     }
 }

@@ -1,7 +1,5 @@
 package utils;
 
-import java.math.BigInteger;
-
 /**
  * The <code>IConverter</code> is an interface for a base converter.
  *
@@ -16,13 +14,13 @@ public interface IConverter {
      * @param number An number to encode into destination base.
      * @return A string containing the encoded value of number in destination base.
      */
-    String encode(BigInteger number);
+    String encode(Long number);
 
     /**
      * The function decodes from the destination base to base origin. Base depends on the alphabet size.
      *
      * @param encodedValue A string representation in the destination base.
-     * @return A BigInteger value in base origin of the encodedValue.
+     * @return A Long value in base origin of the encodedValue.
      */
-    BigInteger decode(String encodedValue);
+    Long decode(String encodedValue);
 }

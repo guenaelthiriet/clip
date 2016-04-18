@@ -1,7 +1,5 @@
 package utils;
 
-import java.math.BigInteger;
-
 /**
  * The <code>BaseConverter</code> is a base 10 to any base converter
  * It implements the <code>{@link IConverter}</code> interface.
@@ -29,14 +27,14 @@ public final class BaseConverter implements IConverter {
     /**
      * The target base in which we wish to encode
      */
-    private final BigInteger base;
+    private final Long base;
 
     /**
      * @param alphabet The target alphabet to use.
      */
     private BaseConverter(String alphabet) {
         this.alphabet = alphabet;
-        this.base = new BigInteger(Integer.valueOf(this.alphabet.length()).toString());
+        this.base = Long.valueOf(this.alphabet.length());
     }
 
     /**
@@ -72,11 +70,17 @@ public final class BaseConverter implements IConverter {
      * @param number An number to encode into destination base.
      * @return A string containing the encoded value of number in destination base.
      */
-    public String encode(BigInteger number) {
+    public String encode(Long number) {
         StringBuilder str = new StringBuilder();
-        while (number.compareTo(BigInteger.ZERO) > 0) {
-            str.insert(0, alphabet.charAt(number.mod(base).intValue()));
-            number = number.divide(base);
+        while (number.longValue() > 0) {
+            long modulus = number % base;
+            if(modulus > Integer.MAX_VALUE) {
+                // However unlikely, let's be prepared
+                return null;
+            }
+
+            str.insert(0, alphabet.charAt((int) modulus));
+            number = number / base;
         }
         return str.toString();
     }
@@ -86,13 +90,13 @@ public final class BaseConverter implements IConverter {
      * The function decodes from the destination base to base 10. Base depends on the alphabet size.
      *
      * @param encodedValue A string representation in the destination base.
-     * @return A BigInteger value in base 10 of the encodedValue.
+     * @return A Long value in base 10 of the encodedValue.
      */
-    public BigInteger decode(String encodedValue) {
-        BigInteger num = BigInteger.ZERO;
+    public Long decode(String encodedValue) {
+        Long num = Long.valueOf(0);
         for (int i = 0; i < encodedValue.length(); i++) {
-            BigInteger alphabetValue = BigInteger.valueOf(alphabet.indexOf(encodedValue.charAt(i)));
-            num = num.multiply(base).add(alphabetValue);
+            Long alphabetValue = (long) alphabet.indexOf(encodedValue.charAt(i));
+            num = (num * base) + alphabetValue;
         }
         return num;
     }

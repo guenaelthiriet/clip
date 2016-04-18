@@ -8,8 +8,6 @@ import org.junit.rules.ExpectedException;
 import storage.Storage;
 import utils.IConverter;
 
-import java.math.BigInteger;
-
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
@@ -47,7 +45,7 @@ public class ClipProcessorTest {
         when(storage.getValue(identifier)).thenReturn(longUrl);
 
         // Configure converter
-        when(converter.decode(identifier)).thenReturn(new BigInteger(identifier));
+        when(converter.decode(identifier)).thenReturn(new Long(identifier));
 
         config = new ClipConfiguration(converter, idGenerator, storage);
         ClipProcessor processor = new ClipProcessor(arguments, config);
@@ -71,7 +69,7 @@ public class ClipProcessorTest {
         when(storage.hasKey(identifier)).thenReturn(false);
 
         // Configure converter
-        when(converter.decode(identifier)).thenReturn(new BigInteger(identifier));
+        when(converter.decode(identifier)).thenReturn(new Long(identifier));
 
         config = new ClipConfiguration(converter, idGenerator, storage);
         ClipProcessor processor = new ClipProcessor(arguments, config);
@@ -99,7 +97,7 @@ public class ClipProcessorTest {
         when(storage.getKey(longUrl)).thenReturn(identifier);
 
         // Configure converter
-        when(converter.encode(new BigInteger(identifier))).thenReturn(identifier);
+        when(converter.encode(new Long(identifier))).thenReturn(identifier);
 
         config = new ClipConfiguration(converter, idGenerator, storage);
         ClipProcessor processor = new ClipProcessor(arguments, config);
@@ -108,7 +106,7 @@ public class ClipProcessorTest {
         // Verify
         verify(storage).hasValue(longUrl);
         verify(storage).getKey(longUrl);
-        verify(converter).encode(new BigInteger(identifier));
+        verify(converter).encode(new Long(identifier));
         verify(idGenerator, never()).getNextId();
     }
 
@@ -124,10 +122,10 @@ public class ClipProcessorTest {
         when(storage.hasValue(longUrl)).thenReturn(false);
 
         // Configure converter
-        when(converter.encode(new BigInteger(identifier))).thenReturn(identifier);
+        when(converter.encode(new Long(identifier))).thenReturn(identifier);
 
         // Configure generator
-        when(idGenerator.getNextId()).thenReturn(new BigInteger(identifier));
+        when(idGenerator.getNextId()).thenReturn(new Long(identifier));
 
         config = new ClipConfiguration(converter, idGenerator, storage);
         ClipProcessor processor = new ClipProcessor(arguments, config);
@@ -136,7 +134,7 @@ public class ClipProcessorTest {
         // Verify
         verify(storage).hasValue(longUrl);
         verify(storage).store(identifier, longUrl);
-        verify(converter).encode(new BigInteger(identifier));
+        verify(converter).encode(new Long(identifier));
         verify(idGenerator).getNextId();
     }
 
