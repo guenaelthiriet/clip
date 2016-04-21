@@ -1,51 +1,53 @@
-group 'clx.challenge'
-version '1.0-SNAPSHOT'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE")
+    }
+}
 
 apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
 apply plugin: 'application'
 apply plugin: "jacoco"
-apply plugin: "io.spring.dependency-management"
 
-sourceCompatibility = 1.7
+jar {
+    baseName = 'gs-accessing-data-jpa'
+    version =  '0.1.0'
+}
 
 repositories {
     mavenCentral()
 }
 
-buildscript {
-    dependencies {
-        classpath "io.spring.gradle:dependency-management-plugin:0.4.0.RELEASE"
-    }
-}
-
-
-dependencyManagement {
-    imports {
-        mavenBom 'org.springframework.data:spring-data-releasetrain:Hopper-SR1'
-    }
-}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 dependencies {
     compile 'commons-cli:commons-cli:1.3'
     compile 'commons-collections:commons-collections:3.2.2'
     compile 'commons-lang:commons-lang:2.6'
     compile 'commons-validator:commons-validator:1.5.0'
-    compile 'org.springframework.data:spring-data-jpa'
-    compile 'org.springframework.data:spring-data-rest'
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("com.h2database:h2")
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
     testCompile 'org.mockito:mockito-core:1.+'
 }
 
+group 'clx.challenge'
+version '1.0-SNAPSHOT'
 //create a single Jar with all dependencies
-mainClassName = "clip.Clip"
-task jarWithDependencies(type: Jar) {
-    manifest {
-        attributes 'Implementation-Title': 'Clip jar file',
-                'Implementation-Version': version,
-                'Main-Class': mainClassName
-    }
-    baseName = project.name + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
-}
+//mainClassName = "clip.Clip"
+//task jarWithDependencies(type: Jar) {
+//    manifest {
+//        attributes 'Implementation-Title': 'Clip jar file',
+//                'Implementation-Version': version,
+//                'Main-Class': mainClassName
+//    }
+//    baseName = project.name + '-all'
+//    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+//    with jar
+//}
