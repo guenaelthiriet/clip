@@ -14,7 +14,7 @@ apply plugin: 'application'
 apply plugin: "jacoco"
 
 jar {
-    baseName = 'gs-accessing-data-jpa'
+    baseName = project.name
     version =  '0.1.0'
 }
 
