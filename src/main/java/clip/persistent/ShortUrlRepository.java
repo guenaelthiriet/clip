@@ -1,4 +1,4 @@
-package storage.persistent;
+package clip.persistent;
 
 import org.springframework.data.repository.CrudRepository;
 

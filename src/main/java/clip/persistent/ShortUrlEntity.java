@@ -1,4 +1,4 @@
-package storage.persistent;
+package clip.persistent;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

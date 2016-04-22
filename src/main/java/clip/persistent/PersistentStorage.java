@@ -1,4 +1,4 @@
-package storage.persistent;
+package clip.persistent;
 
 import storage.InvalidArgumentException;
 import storage.InvalidStateException;

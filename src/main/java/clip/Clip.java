@@ -1,5 +1,7 @@
 package clip;
 
+import clip.persistent.PersistentStorage;
+import clip.persistent.ShortUrlRepository;
 import generator.Generator;
 import generator.SimpleGenerator;
 import org.apache.commons.lang.StringUtils;
@@ -8,8 +10,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import storage.Storage;
-import storage.persistent.PersistentStorage;
-import storage.persistent.ShortUrlRepository;
 import utils.BaseConverter;
 import utils.IConverter;
 
@@ -48,7 +48,7 @@ public class Clip {
 
 
     @Bean
-    public CommandLineRunner clip(ShortUrlRepository repository) {
+    public CommandLineRunner runner(ShortUrlRepository repository) {
         return (args) -> {
             // Let's configure clip!
             IConverter converter = BaseConverter.createBaseConverter(ALPHABET);
