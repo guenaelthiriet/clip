@@ -27,7 +27,6 @@ public class PersistentStorage implements Storage {
         if ((key == null) || (value == null)) {
             throw new InvalidArgumentException("key or value are null");
         }
-        // DualHashBidiMap will overwrite the content if entries exist.
         if (hasKey(key)) {
             throw new InvalidStateException("Identifier already in container");
         }
