@@ -51,7 +51,7 @@ public class Clip {
     public CommandLineRunner clip(ShortUrlRepository repository) {
         return (args) -> {
             // Let's configure clip!
-            IConverter converter =aseConverter.createBaseConverter(ALPHABET);
+            IConverter converter = BaseConverter.createBaseConverter(ALPHABET);
             String lastCharOfAlphabet = ALPHABET.substring(ALPHABET.length() - 1);
             String biggestEncodedNumber = StringUtils.repeat(lastCharOfAlphabet, MAX_CHARS_IN_SHORT_URL);
 
